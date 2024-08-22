@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os 
 from pathlib import Path 
 
+if os.path.exists('env.py'):
+    import env
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -55,11 +58,14 @@ INSTALLED_APPS = [
 
     # Apps
     'home',
-    'crispy_forms',
-    'crispy_bootstrap5',
     'cloudinary',
     'cloudinary_storage',
-    'djrichtextfield'
+    'djrichtextfield', 
+
+    #Others
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'Tip', 
 ]
 
 SITE_ID = 1 
@@ -98,7 +104,7 @@ TEMPLATES = [
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
-                'crispy_forms.templatetags.crispy_forms_field'
+                'crispy_forms.templatetags.crispy_forms_field', 
             ]
         },
     },
@@ -110,17 +116,22 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
     
 ]
-
 WSGI_APPLICATION = 'main.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pond_stuff_virus_236459',
+        'USER': 'uzgxsspspo2',
+        'PASSWORD': 'bkFpIgNlH0Gb',
+        'HOST': 'ep-gentle-mountain-a23bxz6h-pooler.eu-central-1.aws.neon.tech',
+        'PORT': '5432',
     }
 }
 

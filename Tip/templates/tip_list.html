@@ -1,0 +1,16 @@
+<!-- Tip/templates/tip_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tip List</title>
+</head>
+<body>
+    <h1>Tips</h1>
+    <ul>
+        {% for tip in tips %}
+            <li>{{ tip.amount }} from {{ tip.sender }} to {{ tip.receiver }} on {{ tip.date }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
