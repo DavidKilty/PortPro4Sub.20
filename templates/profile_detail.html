@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Detail</title>
+    <!-- Add any additional stylesheets or meta tags here -->
+</head>
+<body>
+    <h1>{{ profile.user.username }}'s Tip Jar</h1>
+    <p>Tip Jar ID: {{ profile.tip_jar_id }}</p>
+    <p>Total Tips Received: EUR {{ profile.total_tips_received }}</p>
+
+    <h2>Send a Tip</h2>
+    
+    <!-- Tipping buttons and counter -->
+    <div>
+        <h3>Select Tip Amount</h3>
+        <div id="tip-buttons">
+            <button type="button" class="btn btn-primary" onclick="addAmount(0.20)">EUR 00.20</button>
+            <button type="button" class="btn btn-primary" onclick="addAmount(0.50)">EUR 00.50</button>
+            <button type="button" class="btn btn-primary" onclick="addAmount(1.00)">EUR 01.00</button>
+            <button type="button" class="btn btn-primary" onclick="addAmount(2.00)">EUR 02.00</button>
+            <button type="button" class="btn btn-primary" onclick="addAmount(5.00)">EUR 05.00</button>
+            <button type="button" class="btn btn-primary" onclick="addAmount(10.00)">EUR 10.00</button>
+            <button type="button" class="btn btn-primary" onclick="addAmount(50.00)">EUR 20.00</button>
+        </div>
+
+        <h4>Total Tip: EUR <span id="total-tip">0.00</span></h4>
+        <button type="button" class="btn btn-danger" onclick="subtractAmount()">Undo Last</button>
+        <button type="button" class="btn btn-success" onclick="submitTip()">Send Tip</button>
+    </div>
+
+    <script>
+        let totalTip = 0;
+let tips = [];
+
+function addAmount(amount) {
+    tips.push(amount);  // Add the amount to the tips array
+    totalTip += amount;
+    updateTotal();
+}
+
+function subtractAmount() {
+    if (tips.length > 0) {
+        let lastTip = tips.pop();  // Remove the last amount from the tips array
+        totalTip -= lastTip;
+        updateTotal();
+    }
+}
+
+function removeSpecificAmount(index) {
+    if (index >= 0 && index < tips.length) {
+        let removedTip = tips.splice(index, 1);  // Remove the specific amount by index
+        totalTip -= removedTip[0];
+        updateTotal();
+    }
+}
+
+function updateTotal() {
+    document.getElementById("total-tip").innerText = totalTip.toFixed(2);
+}
+
+function submitTip() {
+    // Here, you can submit the tip to your server using an AJAX request or a form submission.
+    alert(`Sending a tip of EUR ${totalTip.toFixed(2)}`);
+    // Reset after sending the tip
+    totalTip = 0;
+    tips = [];
+    updateTotal();
+}
+    </script>
+
+</body>
+</html>

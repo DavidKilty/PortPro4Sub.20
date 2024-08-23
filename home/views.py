@@ -1,15 +1,21 @@
+from django.shortcuts import render, get_object_or_404
+from .models import Profile, Tip
+from .forms import TipForm
 from django.views.generic import TemplateView
-from django.shortcuts import render
-from .models import Tip
 
 
 class Index(TemplateView):
     template_name = 'home/index.html'  
 
 def home(request):
-    return render(request, 'home/index.html')
-from django.shortcuts import render, get_object_or_404
-from .models import Profile
+    balance = None
+    if request.user.is_authenticated:
+        try:
+            profile = Profile.objects.get(user=request.user)
+            balance = profile.total_tips_received
+        except Profile.DoesNotExist:
+            balance = None
+    return render(request, 'home/index.html', {'balance': balance})
 
 def search_tip_jar(request):
     if request.method == "GET":
@@ -18,10 +24,6 @@ def search_tip_jar(request):
             profile = get_object_or_404(Profile, tip_jar_id=query)
             return render(request, 'profile_detail.html', {'profile': profile})
     return render(request, 'search.html')
-
-from django.shortcuts import render, get_object_or_404
-from .models import Profile, Tip
-from .forms import TipForm
 
 def profile_detail(request, tip_jar_id):
     profile = get_object_or_404(Profile, tip_jar_id=tip_jar_id)
@@ -34,9 +36,6 @@ def profile_detail(request, tip_jar_id):
     
     return render(request, 'profile_detail.html', {'profile': profile, 'form': form})
 
-from django.shortcuts import render
-
-def home_view(request):
-    return render(request, 'home/home.html') 
-    
-
+def tip_list(request):
+    tips = Tip.objects.all()  # Query to get all tips from the database
+    return render(request, 'tip_list.html', {'tips': tips})
