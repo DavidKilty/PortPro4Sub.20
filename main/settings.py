@@ -28,7 +28,7 @@ if os.path.exists('env.py'):
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = 'False' in os.environ
 
 ALLOWED_HOSTS = [
      '8000-davidkilty-portpro4sub2-bxkpc9wsiwh.ws.codeinstitute-ide.net' 
