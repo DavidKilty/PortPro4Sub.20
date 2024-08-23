@@ -16,6 +16,7 @@ httplib2==0.22.0
 idna==3.7
 oauth2==1.9.0.post1
 oauthlib==3.2.2
+psycopg2==2.9.9
 pycparser==2.22
 PyJWT==2.9.0
 pyparsing==3.1.2
@@ -26,4 +27,3 @@ requests-oauthlib==2.0.0
 six==1.16.0
 sqlparse==0.5.1
 urllib3==2.2.2
-psycopg2>=2.9.9
