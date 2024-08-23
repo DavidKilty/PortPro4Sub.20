@@ -14,18 +14,22 @@
     --orange: #ffbf50;
 
     /* Utils */
-    --smal-box-shadow: 1px -1px 7px 0 #00000061;
+    --small-box-shadow: 1px -1px 7px 0 #00000061;
     --border: 1px solid #00000030;
 }
 
 html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     display: flex;
     flex-direction: column;
     font-family: var(--main-font);
+    background-color: var(--background);
+    color: var(--black);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -35,6 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 main {
     flex: 1 0 auto;
     background-color: var(--white);
+    padding: 1rem;
 }
 
 /* Footer */
@@ -46,6 +51,7 @@ footer {
     justify-content: center;
     align-items: center;
     border-top: var(--border);
+    padding: 1rem;
 }
 
 .social-icon {
@@ -56,7 +62,7 @@ footer {
 /* Header */
 .navbar {
     background-color: var(--off-white);
-    box-shadow: var(--smal-box-shadow);
+    box-shadow: var(--small-box-shadow);
 }
 
 a.nav-link {
@@ -77,85 +83,10 @@ img.logo {
 .form {
     width: 100%;
     margin: 3% auto;
-    box-shadow: var(--smal-box-shadow);
+    box-shadow: var(--small-box-shadow);
     border-radius: 5px;
-}
-
-/* Info */
-
-.card {
-    height: 90%;
-    margin-top: 1rem;
-}
-
-.info {
-    text-decoration: none;
-    color: var(--black);
-}
-
-.info:hover {
-    cursor: pointer;
-}
-
-.info-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.info-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.ingredients, .instructions, .recipe-detail {
-    width: 100%;
-}
-
-.recipe-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.recipe-pic {
-    width: 100%;
-    height: auto;
-}
-
-.recipe-cont {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
-a.img-container {
-    position: relative;
-    text-align: center;
-    color: var(--white);
-    margin: 2%;
-    overflow: hidden;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    box-shadow: var(--smal-box-shadow);
-}
-
-a.img-container:hover {
-    color: var(--orange);
-}
-
-.img-container img {
-    width: 100%;
-    height: auto;
-}
-
-.centered {
-    width: 100%;
-    background-color: #000000c9;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding: 1rem;
+    background-color: var(--off-white);
 }
 
 /* Profiles */
@@ -174,108 +105,43 @@ a.img-container:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.info {
-    width: 100%;
     text-align: center;
+    padding: 2rem;
+    background-color: var(--white);
+    border: var(--border);
+    box-shadow: var(--small-box-shadow);
+    margin: 1rem 0;
 }
 
-.profile-recipes {
-    width: 100%;
-}
 
-/* Meal Planner */
 
-.accordion-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.accordion-button {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin: 0;
-}
-
-.meals {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-h3 > a {
-    text-align: center;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.thumb img {
-    width: 100%;
-}
-
-@media screen and (min-width:40em){
+@media screen and (min-width: 40em) {
     .form {
         width: 50%;
     }
 
-    .recipe-cont {
-        flex-direction: row;
-    }
-
-    .img-container {
-        flex-direction: row;
-        width: 29%;
-    }
-}
-
-@media screen and (min-width: 62.5em) {
-    .main-title {
-        width: 50%;
-    }
-    
-    .recipe-info {
-        flex-direction: row;
-        border: 1px solid var(--black);
-    }
-
-    .recipe-img {
-        width: 40%;
-        margin: 0 auto;
-    }
-
-    .recipe-detail {
-        width: 60%;
-        padding: 2rem;
-    }
-
-    .recipe-container {
-        flex-direction: row;
-    }
-
-    .ingredients {
-        width: 33.33%;
-    }
-
-    .instructions {
-        width: 66.66%;
-    }
-
     .profile {
         flex-direction: row;
+        text-align: left;
     }
 
-    .info {
-        width: 30%;
+    .profile-img {
+        margin: 0 2rem 0 0;
+        width: 40%;
     }
 
-    .profile-recipes {
-        width: 70%;
-        padding: 1.5rem 3rem;
-    }
+/* Tip Jar Specific Styles */
 
-    .profile-recipes a {
-        text-decoration: none;
-    }
+.tip-button {
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tip-button:hover {
+    background-color: darken(var(--orange), 10%);
 }
