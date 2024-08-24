@@ -32,9 +32,9 @@ DEBUG = 'False' in os.environ
 
 ALLOWED_HOSTS = [
      '8000-davidkilty-portpro4sub2-bxkpc9wsiwh.ws.codeinstitute-ide.net', 
-     'itisgivingtipsapp-ede23b2a2a33.herokuapp.com', 'localhost', '127.0.0.1'
-
-
+     'itisgivingtipsapp-ede23b2a2a33.herokuapp.com', 
+     'localhost', 
+     '127.0.0.1'
 
 ]
 
